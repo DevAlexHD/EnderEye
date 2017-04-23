@@ -1,5 +1,6 @@
 package de.dynsystems.endereye;
 
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -7,13 +8,25 @@ import org.bukkit.plugin.java.JavaPlugin;
  */
 public class EnderEye extends JavaPlugin {
 
+    private static EnderEye instance;
     @Override
     public void onEnable() {
+        instance = this;
 
+        start();
     }
 
     @Override
     public void onDisable() {
+        instance = null;
+    }
 
+    private void start() {
+        Bukkit.getConsoleSender().sendMessage("§aStarting EnderEye...");
+
+    }
+
+    public static EnderEye getInstance() {
+        return instance;
     }
 }
